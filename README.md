@@ -1,0 +1,1 @@
+# bagger_adapters
