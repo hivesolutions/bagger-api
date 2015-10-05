@@ -1,5 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import appier
 import appier_extras
+
 from .category import Category
 
 class Product(appier_extras.admin.Base):
