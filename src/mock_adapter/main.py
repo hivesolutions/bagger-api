@@ -4,8 +4,6 @@
 import appier
 import appier_extras
 
-import models
-
 class BaggerApp(appier.WebApp):
 
     def __init__(self):

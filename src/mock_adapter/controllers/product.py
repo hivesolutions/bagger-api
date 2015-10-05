@@ -3,8 +3,6 @@
 
 import appier
 
-import models
-
 class ProductController(appier.Controller):
 
     @appier.route("/products/<id>.png", "GET")
