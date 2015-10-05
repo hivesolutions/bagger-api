@@ -4,3 +4,4 @@
 from . import product
 
 from .product import ProductController
+from .category import CategoryController

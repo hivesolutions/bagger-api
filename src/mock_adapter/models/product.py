@@ -1,5 +1,6 @@
 import appier
 import appier_extras
+from .category import Category
 
 class Product(appier_extras.admin.Base):
 
@@ -25,4 +26,10 @@ class Product(appier_extras.admin.Base):
 
     image_urls = appier.field(
         type = list
+    )
+
+    category = appier.field(
+        type = appier.reference(
+            Category
+        )
     )
