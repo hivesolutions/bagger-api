@@ -22,9 +22,10 @@ class CategoryController(appier.Controller):
         finally: file.close()
         return data
 
-    @appier.route("/categories/<category>/products.json", "GET")
+    @appier.route("/categories/<int:category>/products.json", "GET")
     def list_products(self, category):
         skip = self.get_field("skip", 0, int)
         limit = self.get_field("limit", 25, int)
-        products = models.Product.find(skip = skip, limit = limit)
+        products = models.Product.find(category = category, skip = skip, limit = limit)
+        print products
         return products

@@ -1,6 +1,5 @@
 import appier
 import appier_extras
-from .category import Category
 
 class Product(appier_extras.admin.Base):
 
@@ -30,6 +29,6 @@ class Product(appier_extras.admin.Base):
 
     category = appier.field(
         type = appier.reference(
-            Category
+            "Category"
         )
     )
