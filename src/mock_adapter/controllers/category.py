@@ -9,12 +9,12 @@ class CategoryController(appier.Controller):
 
     @appier.route("/categories.json", "GET")
     def list(self):
-        skip = self.get_field("skip", 0, int)
-        limit = self.get_field("limit", 5, int)
+        skip = self.get_field("skip", cast = int)
+        limit = self.get_field("limit", cast = int)
         categories = models.Category.find(skip = skip, limit = limit)
         return categories
 
-    @appier.route("/categories/<id>.png", "GET")
+    @appier.route("/categories/<int:id>.png", "GET")
     def image(self, id):
         path = "resources/images/category{}.png".format(id)
         file = open(path, "rb")

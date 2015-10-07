@@ -12,6 +12,5 @@ class UserController(appier.Controller):
     def login(self):
         #self.url_for("admin.login_api", username = "root", password = "root")
         bag = models.Bag.new()
-        bag.id = self.session.sid
-        print self.session
+        bag.session_id = 1#self.session.sid
         bag.save()

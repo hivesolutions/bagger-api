@@ -12,9 +12,10 @@ class ProductController(appier.Controller):
         product = models.Product.find(id = id)
         return product
 
-    @appier.route("/products/<id>.png", "GET")
+    @appier.route("/products/<int:id>.png", "GET")
     def image(self, id):
-        file = open("resources/images/bikini1.png", "rb")
+        path = "resources/images/product%s.png" % id
+        file = open(path, "rb")
         try: data = file.read()
         finally: file.close()
         return data
