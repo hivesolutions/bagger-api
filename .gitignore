@@ -1,3 +1,9 @@
 *.pyc
-*.shelve
 
+session.shelve*
+
+.DS_Store
+
+/dist
+/build
+/src/bagger_api.egg-info
