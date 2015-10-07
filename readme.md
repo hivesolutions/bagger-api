@@ -1,3 +1,3 @@
-# Bagger Adapters
+# Bagger API
 
-Set of adapters for e-commerce solutions to Bagger API.
+The API implementation for Bagger.
