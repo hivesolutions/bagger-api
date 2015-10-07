@@ -3,11 +3,13 @@
 
 import appier
 
+import models
+
 class ProductController(appier.Controller):
 
     @appier.route("/products/<int:id>.json", "GET")
     def show(self, id):
-        product = models.Product.find(id = id)
+        product = models.Product.get(id = id, map = True)
         return product
 
     @appier.route("/products/<int:id>.png", "GET")
