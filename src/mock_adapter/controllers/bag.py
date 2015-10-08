@@ -7,25 +7,22 @@ import models
 
 class BagController(appier.Controller):
 
-    @appier.route("/bags/me", "GET")
+    @appier.route("/bag", "GET")
     def me_bag(self):
-        bag = models.Bag.get_from_session(map = True)
-        return bag
+        return models.Bag.get_from_session(map = True)
 
-    @appier.route("/bags/<int:id>/add/<int:product_id>", "POST")
-    def add_to_bag(self, id, product_id):
+    @appier.route("/bag/add/<int:product_id>", "POST")
+    def add_produc(self, product_id):
         quantity = self.get_field("quantity", cast = int)
-        session_id = 1
         product = models.Product.get(id = product_id)
-        bag = models.Bag.get(session_id = id)
+        bag = models.Bag.get_from_session()
         bag.add_product_s(product, quantity)
         return bag
 
-    @appier.route("/bags/<int:id>/remove/<int:product_id>", "POST")
-    def remove_product(self, id, product_id):
+    @appier.route("/bag/remove/<int:product_id>", "POST")
+    def remove_product(self, product_id):
         quantity = self.get_field("quantity", cast = int)
-        session_id = 1
         product = models.Product.get(id = product_id)
-        bag = models.Bag.get(session_id = id)
+        bag = models.Bag.get_from_session()
         bag.remove_product_s(product, quantity)
         return bag
