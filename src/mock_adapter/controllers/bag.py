@@ -9,8 +9,7 @@ class BagController(appier.Controller):
 
     @appier.route("/bags/me", "GET")
     def me_bag(self):
-        session_id = 1
-        bag = models.Bag.get(session_id = session_id, map = True)
+        bag = models.Bag.get_from_session(map = True)
         return bag
 
     @appier.route("/bags/<int:id>/add/<int:product_id>", "POST")

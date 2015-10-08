@@ -13,7 +13,12 @@ class Bag(appier_extras.admin.Base):
     session_id = appier.field(
         type = int
     )
-
+    
+    @classmethod
+    def get_from_session(cls, **kwargs):
+        session_id = 1
+        return cls.get(session_id = session_id, **kwargs)
+        
     def add_product_s(self, product, quantity):
         if not hasattr(self, "lines"): self.lines = {}
         product_id = "%s" % product.id
