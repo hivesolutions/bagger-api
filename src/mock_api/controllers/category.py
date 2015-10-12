@@ -11,7 +11,7 @@ class CategoryController(appier.Controller):
     def list(self):
         skip = self.get_field("skip", 0, cast = int)
         limit = self.get_field("limit", 5, cast = int)
-        categories = models.Category.find(skip = skip, limit = limit)
+        categories = models.Category.find(skip = skip, limit = limit, map = True)
         return categories
 
     @appier.route("/categories/<int:id>.png", "GET")
