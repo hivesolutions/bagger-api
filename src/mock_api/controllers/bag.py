@@ -8,11 +8,11 @@ import models
 class BagController(appier.Controller):
 
     @appier.route("/bag", "GET")
-    def me_bag(self):
+    def bag(self):
         return models.Bag.get_from_session(map = True)
 
     @appier.route("/bag/add/<int:product_id>", "POST")
-    def add_produc(self, product_id):
+    def add_product(self, product_id):
         quantity = self.get_field("quantity", cast = int)
         product = models.Product.get(id = product_id)
         bag = models.Bag.get_from_session()

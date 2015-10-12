@@ -16,7 +16,7 @@ class CategoryController(appier.Controller):
 
     @appier.route("/categories/<int:id>.png", "GET")
     def image(self, id):
-        path = "resources/images/category{}.png".format(id)
+        path = "resources/images/category%d.png" % id
         file = open(path, "rb")
         try: data = file.read()
         finally: file.close()
