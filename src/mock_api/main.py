@@ -4,7 +4,7 @@
 import appier
 import appier_extras
 
-class BaggerApp(appier.WebApp):
+class BaggerMockApiApp(appier.WebApp):
 
     def __init__(self):
         appier.WebApp.__init__(
@@ -14,4 +14,4 @@ class BaggerApp(appier.WebApp):
             )
         )
 
-BaggerApp().serve()
+BaggerMockApiApp().serve()

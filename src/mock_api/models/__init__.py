@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from . import product
-from . import category
-
+from .bag import Bag
 from .product import Product
 from .category import Category

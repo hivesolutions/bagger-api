@@ -4,8 +4,6 @@
 import appier
 import appier_extras
 
-from .category import Category
-
 class Product(appier_extras.admin.Base):
 
     name = appier.field(
@@ -34,6 +32,6 @@ class Product(appier_extras.admin.Base):
 
     category = appier.field(
         type = appier.reference(
-            Category
+            "Category"
         )
     )
