@@ -9,7 +9,8 @@ class ProductController(appier.Controller):
 
     @appier.route("/products/<int:id>.json", "GET")
     def show(self, id):
-        return models.Product.get(id = id, map = True)
+        product = models.Product.get(id = id, map = True)
+        return product
 
     @appier.route("/products/<int:id>.png", "GET")
     def image(self, id):

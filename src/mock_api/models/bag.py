@@ -16,6 +16,11 @@ class Bag(appier_extras.admin.Base):
 
     @classmethod
     def get_from_session(cls, **kwargs):
+        bag = cls.get(session_id = 1, raise_e = False)
+        if not bag:
+            bag = Bag.new()
+            bag.session_id = 1
+            bag.save()
         return cls.get(session_id = 1, **kwargs)
         
     def add_product_s(self, product, quantity):
