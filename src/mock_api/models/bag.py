@@ -9,7 +9,7 @@ class Bag(appier_extras.admin.Base):
     session_id = appier.field(
         type = int
     )
-    
+
     lines = appier.field(
         type = dict
     )
@@ -22,7 +22,7 @@ class Bag(appier_extras.admin.Base):
             bag.session_id = 1
             bag.save()
         return cls.get(session_id = 1, **kwargs)
-        
+
     def add_product_s(self, product, quantity):
         if not hasattr(self, "lines"): self.lines = {}
         product_id = str(product.id)
