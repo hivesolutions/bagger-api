@@ -37,15 +37,15 @@ class Product(appier_extras.admin.Base):
             "Category"
         )
     )
-    
+
     category_name = appier.field(
         type = unicode,
         index = True
     )
-    
+
     def pre_save(self):
         appier_extras.admin.Base.pre_save(self)
-        
+
         # sets the category name
         description = str(self.category_id)
         category = Category.get(description = description)
