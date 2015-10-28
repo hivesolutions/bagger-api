@@ -27,7 +27,7 @@ class CategoryController(appier.Controller):
         skip = self.get_field("skip", 0, cast = int)
         limit = self.get_field("limit", 25, cast = int)
         products = models.Product.find(
-            category = category,
+            category_id = category,
             skip = skip,
             limit = limit
         )

@@ -4,6 +4,8 @@
 import appier
 import appier_extras
 
+from .category import Category
+
 class Product(appier_extras.admin.Base):
 
     name = appier.field(
@@ -30,8 +32,21 @@ class Product(appier_extras.admin.Base):
         type = list
     )
 
-    category = appier.field(
+    category_id = appier.field(
         type = appier.reference(
             "Category"
         )
     )
+    
+    category_name = appier.field(
+        type = unicode,
+        index = True
+    )
+    
+    def pre_save(self):
+        appier_extras.admin.Base.pre_save(self)
+        
+        # sets the category name
+        description = str(self.category_id)
+        category = Category.get(description = description)
+        self.category_name = category.name
