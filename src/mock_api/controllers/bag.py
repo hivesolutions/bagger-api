@@ -3,26 +3,32 @@
 
 import appier
 
-import models
+import mock_api
 
 class BagController(appier.Controller):
 
     @appier.route("/bag", "GET")
     def bag(self):
-        return models.Bag.get_from_session(map = True)
+        return mock_api.Bag.get_from_session(map = True)
 
-    @appier.route("/bag/add/<int:product_id>", "POST")
-    def add_product(self, product_id):
-        quantity = self.get_field("quantity", cast = int)
-        product = models.Product.get(id = product_id)
-        bag = models.Bag.get_from_session()
-        bag.add_product_s(product, quantity)
+    @appier.route("/bag/add", "POST")
+    def add_product(self):
+        product_id = self.field("product_id", cast = int)
+        quantity = self.field("quantity", 1, cast = int)
+        product = mock_api.Product.get(id = product_id)
+        bag = mock_api.Bag.get_from_session()
+        bag.add_product_s(product, quantity = quantity)
         return bag
 
-    @appier.route("/bag/remove/<int:product_id>", "POST")
+    @appier.route("/bag/<int:product_id>", "DELETE")
     def remove_product(self, product_id):
-        quantity = self.get_field("quantity", cast = int)
-        product = models.Product.get(id = product_id)
-        bag = models.Bag.get_from_session()
-        bag.remove_product_s(product, quantity)
+        bag = mock_api.Bag.get_from_session()
+        bag.remove_product_s(product_id)
+        return bag
+
+    @appier.route("/bag/<int:product_id>", "PUT")
+    def update_product(self, product_id):
+        quantity = self.field("quantity", 1, cast = int)
+        bag = mock_api.Bag.get_from_session()
+        bag.remove_product_s(product_id, quantity = quantity)
         return bag

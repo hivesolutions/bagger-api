@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import appier
-import appier_extras
 
-class Product(appier_extras.admin.Base):
+from . import base
+from . import category
+
+class Product(base.BaggerBase):
 
     name = appier.field(
-        type = unicode,
         index = True
     )
 
     size = appier.field(
-        type = unicode,
         index = True
     )
 
@@ -22,7 +22,6 @@ class Product(appier_extras.admin.Base):
     )
 
     image_url = appier.field(
-        type = unicode,
         index = True
     )
 
@@ -30,8 +29,26 @@ class Product(appier_extras.admin.Base):
         type = list
     )
 
+    category_name = appier.field()
+
     category = appier.field(
         type = appier.reference(
-            "Category"
+            category.Category
         )
     )
+
+    @classmethod
+    def validate(cls):
+        return super(Product, cls).validate() + [
+            appier.not_null("name"),
+            appier.not_empty("name")
+        ]
+
+    @classmethod
+    def list_names(cls):
+        return ["id", "name", "price", "image_url", "category_name"]
+
+    def pre_save(self):
+        base.BaggerBase.pre_save(self)
+
+        self.category_name = self.category.name
