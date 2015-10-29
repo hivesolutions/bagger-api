@@ -22,7 +22,8 @@ class Product(base.BaggerBase):
     )
 
     image_url = appier.field(
-        index = True
+        index = True,
+        meta = "url"
     )
 
     image_urls = appier.field(

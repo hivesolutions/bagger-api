@@ -12,7 +12,8 @@ class Category(base.BaggerBase):
     )
 
     image_url = appier.field(
-        index = True
+        index = True,
+        meta = "url"
     )
 
     @classmethod
