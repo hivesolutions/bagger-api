@@ -4,7 +4,7 @@
 import appier
 import appier_extras
 
-import category
+from .category import Category
 
 class Product(appier_extras.admin.Base):
 
