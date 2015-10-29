@@ -14,4 +14,6 @@ class BaggerMockApiApp(appier.WebApp):
             )
         )
 
-BaggerMockApiApp().serve()
+if __name__ == "__main__":
+    app = BaggerMockApiApp()
+    app.serve()
