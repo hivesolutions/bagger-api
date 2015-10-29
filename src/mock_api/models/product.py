@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import appier
-import appier_extras
 
-from .category import Category
+from . import base
+from . import category
 
-class Product(appier_extras.admin.Base):
+class Product(base.BaggerBase):
 
     name = appier.field(
         type = unicode,
@@ -34,7 +34,7 @@ class Product(appier_extras.admin.Base):
 
     category = appier.field(
         type = appier.reference(
-            "Category"
+            category.Category
         )
     )
 
@@ -43,6 +43,6 @@ class Product(appier_extras.admin.Base):
     )
 
     def pre_save(self):
-        appier_extras.admin.Base.pre_save(self)
+        base.BaggerBase.pre_save(self)
 
         self.category_name = self.category.name

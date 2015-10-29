@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import appier
-import appier_extras
 
-class Category(appier_extras.admin.Base):
+from . import base
+
+class Category(base.BaggerBase):
 
     name = appier.field(
         type = unicode,

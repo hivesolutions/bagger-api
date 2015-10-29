@@ -3,30 +3,25 @@
 
 import appier
 
-import models
+import mock_api
 
 class CategoryController(appier.Controller):
 
-    @appier.route("/categories.json", "GET")
+    @appier.route("/categories", "GET")
     def list(self):
-        skip = self.get_field("skip", 0, cast = int)
-        limit = self.get_field("limit", 5, cast = int)
-        categories = models.Category.find(skip = skip, limit = limit, map = True)
+        object = appier.get_object(alias = True, find = True)
+        categories = mock_api.Category.find(map = True, **object)
         return categories
 
     @appier.route("/categories/<int:id>.png", "GET")
     def image(self, id):
-        path = "resources/images/category%d.png" % id
-        file = open(path, "rb")
-        try: data = file.read()
-        finally: file.close()
-        return data
+        return self.send_static("images/category%d.png" % id)
 
-    @appier.route("/categories/<int:category>/products.json", "GET")
+    @appier.route("/categories/<int:category>/products", "GET")
     def list_products(self, category):
-        skip = self.get_field("skip", 0, cast = int)
-        limit = self.get_field("limit", 25, cast = int)
-        products = models.Product.find(
+        skip = self.field("skip", 0, cast = int)
+        limit = self.field("limit", 25, cast = int)
+        products = mock_api.Product.find(
             category = category,
             skip = skip,
             limit = limit

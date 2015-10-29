@@ -3,13 +3,13 @@
 
 import appier
 
-import models
+import mock_api
 
 class ProductController(appier.Controller):
 
     @appier.route("/products/<int:id>.json", "GET")
     def show(self, id):
-        product = models.Product.get(id = id, map = True)
+        product = mock_api.Product.get(id = id, map = True)
         return product
 
     @appier.route("/products/<int:id>.png", "GET")
