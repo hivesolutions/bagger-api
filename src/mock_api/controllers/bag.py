@@ -15,9 +15,8 @@ class BagController(appier.Controller):
     def add_product(self):
         product_id = self.field("product_id", cast = int)
         quantity = self.field("quantity", 1, cast = int)
-        product = mock_api.Product.get(id = product_id)
         bag = mock_api.Bag.get_from_session()
-        bag.add_product_s(product, quantity = quantity)
+        bag.add_product_s(product_id, quantity = quantity)
         return bag
 
     @appier.route("/bag/<int:product_id>", "DELETE")
@@ -30,5 +29,5 @@ class BagController(appier.Controller):
     def update_product(self, product_id):
         quantity = self.field("quantity", 1, cast = int)
         bag = mock_api.Bag.get_from_session()
-        bag.remove_product_s(product_id, quantity = quantity)
+        bag.update_product_s(product_id, quantity = quantity)
         return bag

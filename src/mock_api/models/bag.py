@@ -19,8 +19,7 @@ class Bag(base.BaggerBase):
     @classmethod
     def validate(cls):
         return super(Bag, cls).validate() + [
-            appier.not_null("session_id"),
-            appier.not_empty("session_id")
+            appier.not_null("session_id")
         ]
 
     @classmethod

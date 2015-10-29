@@ -19,11 +19,6 @@ class CategoryController(appier.Controller):
 
     @appier.route("/categories/<int:category>/products", "GET")
     def list_products(self, category):
-        skip = self.field("skip", 0, cast = int)
-        limit = self.field("limit", 25, cast = int)
-        products = mock_api.Product.find(
-            category = category,
-            skip = skip,
-            limit = limit
-        )
+        object = appier.get_object(alias = True, find = True)
+        products = mock_api.Product.find(category = category, **object)
         return products
