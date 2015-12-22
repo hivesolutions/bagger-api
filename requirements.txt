@@ -1,1 +1,3 @@
 appier
+jinja2
+pymongo
