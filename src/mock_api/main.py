@@ -9,6 +9,7 @@ class BaggerMockApiApp(appier.WebApp):
     def __init__(self):
         appier.WebApp.__init__(
             self,
+            name = "bagger_mock_api",
             parts = (
                 appier_extras.AdminPart,
             )
