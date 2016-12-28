@@ -19,3 +19,5 @@ class BaggerMockApiApp(appier.WebApp):
 if __name__ == "__main__":
     app = BaggerMockApiApp()
     app.serve()
+else:
+    __path__ = []
