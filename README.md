@@ -1,3 +1,13 @@
 # [Bagger API](http://bagger-api.hive.pt)
 
 The API implementation for Bagger.
+
+## License
+
+Bagger API is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
+
+## Build Automation
+
+[![Build Status](https://travis-ci.org/hivesolutions/bagger_api.svg?branch=master)](https://travis-ci.org/hivesolutions/bagger_api)
+[![Coverage Status](https://coveralls.io/repos/hivesolutions/bagger_api/badge.svg?branch=master)](https://coveralls.io/r/hivesolutions/bagger_api?branch=master)
+[![PyPi Status](https://img.shields.io/pypi/v/bagger_api.svg)](https://pypi.python.org/pypi/bagger_api)
