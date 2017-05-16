@@ -1,3 +1,3 @@
-# [Bagger API](http://bagger_api.hive.pt)
+# [Bagger API](http://bagger-api.hive.pt)
 
 The API implementation for Bagger.
