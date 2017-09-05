@@ -4,7 +4,7 @@
 import appier
 import appier_extras
 
-class BaggerMockApiApp(appier.WebApp):
+class BaggerMockAPIApp(appier.WebApp):
 
     def __init__(self, *args, **kwargs):
         appier.WebApp.__init__(
@@ -17,7 +17,7 @@ class BaggerMockApiApp(appier.WebApp):
         )
 
 if __name__ == "__main__":
-    app = BaggerMockApiApp()
+    app = BaggerMockAPIApp()
     app.serve()
 else:
     __path__ = []
