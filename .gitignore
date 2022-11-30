@@ -6,4 +6,4 @@ session.shelve*
 
 /dist
 /build
-/src/bagger_api.egg-info
+/src/bagger-api.egg-info
